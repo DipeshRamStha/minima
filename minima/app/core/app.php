@@ -75,7 +75,8 @@ In your PHP application, you can then parse this value and use it to determine w
 
 For example, you might have logic in your App class to parse this URL and determine that it corresponds to the product controller, the milk method, and 5 as an additional parameter. This allows your application to route the request appropriately and execute the corresponding code to handle the request.
      */
-    return explode("/", filter_var(trim($_GET['url'], "/"), FILTER_SANITIZE_URL));
+    $url = isset($_GET['url']) ? $_GET['url'] : "home";
+    return explode("/", filter_var(trim($url, "/"), FILTER_SANITIZE_URL));
 
 
   }
