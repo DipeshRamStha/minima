@@ -4,8 +4,7 @@ Class Home extends Controller
 {
   function index()
   {
-    $DB = new Database();
-    $data = $DB->read("SELECT * FROM images");
+    $data['page_title'] = "Home";
     $this->view("home", $data);
   }
 
