@@ -1,7 +1,7 @@
 <?php
 
 // set website title
-define("WEBSITE_NAME", "My Website");
+define("WEBSITE_TITLE", "My Website");
 
 // set database variables
 
