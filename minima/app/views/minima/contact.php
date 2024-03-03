@@ -14,7 +14,7 @@
           <section class="full-width background-dark">
             <div class="s-12 m-12 l-6">
               <!-- Change the background image -->  
-              <div style="background-image: url(img/img-contact.jpg);" class="contact-image" ></div>
+              <div style="background-image: url(<?=ASSETS?>minima/img/img-contact.jpg);" class="contact-image" ></div>
             </div>
             <div class="s-12 m-12 l-6 text-center">
               <div class="padding-2x">
