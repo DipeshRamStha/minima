@@ -2,24 +2,47 @@
 
 Class Upload_file
 {
-  function upload()
+  function upload($POST, $FILES)
   {
     $DB = new Database();
+    $_SESSION['error'] = "";
 
-    if(isset($POST['username']) && isset($POST['password']))
+    $allowed[] = "image/jpeg";
+
+    if(isset($POST['title']) && isset($FILES['file']))
     {
-      $arr['username'] = $POST['username'];
-      $arr['password'] = $POST['password'];
-      $arr['email'] = $POST['email'];
-      $arr['url_address'] = get_random_string_max(60);
-      $arr['date'] = date("Y-m-d H:i:s");
-
-      $query = "INSERT INTO users (username, password, email, url_address, date) VALUES (:username, :password, :email, :url_address, :date)";
-      $data = $DB->write($query, $arr);
-      if($data)
+      // Upload File
+      if($FILES['file']['name'] != "" && $FILES['file']['error'] == 0 && in_array($FILES['file']['type'], $allowed))
       {
-        header("Location:". ROOT . "login");
-        die;
+
+        $folder = "uploads/";
+        if(!file_exists($folder))
+        {
+          mkdir($folder, 0777, true);
+
+        }
+        $destination = $folder . $FILES['file']['name'];
+        move_uploaded_file($FILES['file']['tmp_name'], $destination);
+      }else{
+        $_SESSION['error'] = "This file could not be uploaded";
+      }
+      if($_SESSION['error']=="")
+      {
+        // Save to DB
+        
+        $arr['title'] = $POST['title'];
+        $arr['description'] = $POST['description'];
+        $arr['image'] = $destination;
+        $arr['url_address'] = get_random_string_max(60);
+        $arr['date'] = date("Y-m-d H:i:s");
+  
+        $query = "INSERT INTO images (title, description, url_address, date, image) VALUES (:title, :description, :url_address, :date, :image)";
+        $data = $DB->write($query, $arr);
+        if($data)
+        {
+          header("Location:". ROOT . "home");
+          die;
+        }
       }
     }
   }
