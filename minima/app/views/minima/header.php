@@ -18,8 +18,7 @@
   </head>
 
   <body class="size-1140">
-  	<!-- PREMIUM FEATURES BUTTON -->
-  	<a target="_blank" class="hide-s" href="../template/minimalista-premium-responsive-business-template/" style="position:fixed;top:120px;right:-14px;z-index:10;"><img src="<?=ASSETS?>minima/img/premium-features.png" alt=""></a>
+  	
     <div id="page-wrapper">
       <!-- HEADER -->
       <header role="banner" class="position-absolute margin-top-30 margin-m-top-0 margin-s-top-0">    
@@ -49,9 +48,9 @@
                 <li><a href="<?=ROOT?>signup">Signup</a></li>
                 <?php else: ?>
                   <li><a href="<?=ROOT?>logout">Logout</a></li>
+                  <li><a href="<?=ROOT?>upload">Upload</a></li>
                 <?php endif; ?>
 
-                <li><a href="<?=ROOT?>upload">Upload</a></li>
               </ul>
             </div>
           </div>  
