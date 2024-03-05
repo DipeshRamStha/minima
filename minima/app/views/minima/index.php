@@ -18,7 +18,7 @@
           
           <div class="background-white full-width"> 
             <div class="s-12 m-6 l-five">
-              <a class="image-with-hover-overlay image-hover-zoom" href="/" title="Portfolio Image">
+              <a class="image-with-hover-overlay image-hover-zoom" href="<?=ROOT .'single_post/' . $row->url_address; ?>" title="Portfolio Image">
                 <div class="image-hover-overlay background-primary"> 
                   <div class="image-hover-overlay-content text-center padding-2x">
                     <h3 class="text-white text-size-20 margin-bottom-10"><?=$row->title?></h3>
@@ -35,6 +35,11 @@
 
           </div>  
         </article>
+        <br>
+        <section>
+          <input type="button" class="s-12 submit-form button background-primary text-white" style="width:200px;" value="Prev">
+          <input type="button" class="s-12 submit-form button background-primary text-white" style="width: 200px; float: right;" value="Next">
+        </section>
       </main>
 <?php $this->view("minima/footer", $data); ?>
      
